@@ -1,0 +1,8 @@
+---
+roles:
+   - roles::www
+
+vdomain: php.devops.com
+
+port: '8080'
+index: 'index.php'

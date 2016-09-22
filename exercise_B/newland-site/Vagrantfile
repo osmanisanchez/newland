@@ -1,0 +1,44 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+nodes_config = (JSON.parse(File.read("nodes.json")))['nodes']
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+	config.vm.box = 'debian/jessie64'
+	#config.vm.box_check_update = false
+	
+	config.vm.provision :shell, :path => 'files/bootstrap-puppet-agent.sh'
+
+	nodes_config.each do |node|
+	    node_name = node[0]
+		node_values = node[1]
+
+		config.vm.define node_name do |config|
+			
+			config.vm.hostname = node_name
+			config.vm.network :private_network, ip: node_values[':ip']
+
+			config.vm.provider :virtualbox do |vb|
+				#vb.gui = true
+				vb.name = node_name
+				vb.memory = node_values[':memory']
+				vb.cpus = node_values[':cpus']
+ 			end
+
+			#config.vm.provision :shell, :path => node_values[':bootstrap']
+			config.vm.provision :puppet do |puppet|
+				puppet.hiera_config_path = "puppet/hiera.yaml"
+				puppet.manifests_path = 'puppet/manifests'
+				puppet.module_path = 'puppet/modules'
+				puppet.manifest_file = 'site.pp'
+
+				puppet.options = [
+					'--verbose',
+					'--debug',
+				]
+			end
+		end
+	end
+end

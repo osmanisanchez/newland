@@ -1,0 +1,22 @@
+{
+	"nodes": {
+		"redis.devops.com": {
+		  ":ip": "10.127.0.30",
+		  "ports": [],
+		  ":memory": 256,
+		  ":cpus": 1
+		},
+		"php.devops.com": {
+			":ip": "10.127.0.20",
+			"ports": [],
+			":memory": 1024,
+			":cpus": 1
+		},
+		"nginx.devops.com": {
+			":ip": "10.127.0.10",
+			"ports": [],
+			":memory": 512,
+			":cpus": 2
+		}
+	}
+}

@@ -1,0 +1,13 @@
+server {
+	listen <%= @port %>;
+	server_name nginx nginx.devops.com devops.com www www.devops.com;
+	
+	access_log  /var/log/nginx/access.log;
+	
+	index index.html index.htm index.php index.nginx-debian.html;
+
+	location / {
+		proxy_pass http://php.devops.com:<%= @upstream_port %>;
+		include /etc/nginx/proxy_params;
+	}
+}

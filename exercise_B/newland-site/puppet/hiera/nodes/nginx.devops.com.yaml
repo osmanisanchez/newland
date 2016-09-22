@@ -1,0 +1,17 @@
+---
+roles:
+   - roles::proxy
+
+vdomain: nginx.devops.com
+
+port: '80'
+upstream_port: '8080'
+
+from_address: 'weblandking@gmail.com'
+to_address: 'guzman.braso+sample-alert@batangamedia.com'
+password: 'changemesoon'
+test_page_regexp: '^Hello\sWorld$'
+
+
+
+

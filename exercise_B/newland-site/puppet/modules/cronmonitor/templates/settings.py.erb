@@ -1,0 +1,13 @@
+# Smtp
+username = '<%= @fromaddress %>'
+password = '<%= @password %>'
+fromaddr = '<%= @fromaddress %>'
+toaddrs = '<%= @toaddress %>'
+
+# Hosts -> port
+host_port_dict = {"nginx.devops.com":<%= @proxyport %>, "php.devops.com":<%= @phpport %>, "redis.devops.com":6379}
+web_port_dict = {"nginx.devops.com":<%= @proxyport %>, "php.devops.com":<%= @phpport %>}
+
+# Web test response pattern
+resp_reg = r'<%= @testregexp %>'
+

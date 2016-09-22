@@ -1,0 +1,18 @@
+---
+
+common:
+  - 'profiles::base'
+  
+hosts::one_primary_ipv4: false
+hosts::one_primary_ipv6: false
+hosts::entries:
+    '10.127.0.10':
+        - 'nginx.devops.com'
+        - 'nginx'
+    '10.127.0.20':
+        - 'php.devops.com'
+        - 'php'
+    '10.127.0.30':
+        - 'redis.devops.com'
+        - 'redis'
+   

@@ -1,0 +1,9 @@
+---
+roles:
+   - roles::db
+
+vdomain: redis.devops.com
+
+redis::bind: '10.127.0.30'
+
+
